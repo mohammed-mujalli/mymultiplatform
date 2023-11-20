@@ -43,7 +43,9 @@ abstract class ConfigurationProblemReporterService : AbstractComposeMultiplatfor
     }
     companion object {
         fun init(project: Project) {
-            registerServiceIfAbsent<ConfigurationProblemReporterService, Parameters>(project)
+            registerServiceIfAbsent<ConfigurationProblemReporterService, Parameters>(project) {
+                warnings
+            }
         }
 
         private inline fun configureParameters(project: Project, fn: Parameters.() -> Unit) {
